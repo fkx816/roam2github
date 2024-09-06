@@ -5,15 +5,17 @@
   "main": "roam2github.js",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "edn-formatter": "everruler12/edn-formatter",
-    "extract-zip": "everruler12/extract-zip",
+    "edn-formatter": "github:everruler12/edn-formatter",
+    "extract-zip": "github:everruler12/extract-zip",
     "fs-extra": "^9.1.0",
-    "puppeteer": "^5.5.0",
+    "puppeteer": "^15.5.0",
     "sanitize-filename": "^1.6.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "esbuild": "^0.23.1"
+  },
   "scripts": {
-    "start": "node roam2github.js",
+    "build": "node esbuild.config.js",
     "backup": "node backup.js"
   },
   "repository": {

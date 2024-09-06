@@ -19,25 +19,32 @@ Roam-to-git has offered me great peace of mind knowing my Roam data is safe. How
 
 ## Future Plans
 
+- [ ] MessagePack format support
 - [ ] New, full guide with step-by-step screen recordings
-- [ ] Update code to run asynchronously, instead of linearly, to cut down on run time
-- [ ] Use fipp for faster EDN formatting
-- [x] EDN support (2021-01-31)
-- [x] Multi graph support (2021-02-01)
-- [x] Markdown support (2021-02-04)
-- [x] Allow setup of public repo for running Actions and committing to private repo for backup, in order to bypass minute limit for private GitHub Actions (2021-02-18)
+- [ ] ~~Update code to run asynchronously, instead of linearly, to cut down on run time~~
+- [ ] ~~Use fipp for faster EDN formatting~~
 
-## EDN Backups are live!
+## Changelog
+
+- EDN support (2021-01-31)
+- Multi graph support (2021-02-01)
+- Markdown support (2021-02-04)
+- Allow setup of public repo for running Actions and committing to private repo for backup, in order to bypass minute limit for private GitHub Actions (2021-02-18)
+- New export support for roam research (2024-09-06)
+   -  Roam Research Changelog: Changed [[Export all]] [[JSON]] and [[EDN]] and [[MessagePack]] formats to not download a zip file
+   -  https://roamresearch.com/#/app/help/page/09-03-2024
+
+### EDN Backups are live!
 
 The backup has a check to make sure the formatted EDN (which only adds extra linebreaks and indentation) can be parsed back to match exactly with the original before saving it. It will exit with an error if it can't, so you can rest assured that the formatting doesn't mess with the file integrity. I also tested that the formatted EDN can be used to successfully restore graphs.
 
 2021-01-31 It took all day to figure out how to use ClojureScript to prettify EDN. It was a daunting task, never having dealt with Clojure before, much less compiling it into JavaScript. But I did it! This is necessary because the exported EDN data from Roam is all in one line, meaning GitHub would have to save the entire file each time, instead of just the new lines. This would eat up the storage pretty quickly if run every hour, as unchanged notes would be duplicated each time. And you wouldn't be able to see line-by-line changes in the git history.
 
-## Multi Graph Backups in Same Repo
+### Multi Graph Backups in Same Repo
 
 You can now backup multiple graphs without having to create a new GitHub repo for each one. Just add them to your `R2G_GRAPH` Secret in separate lines, or separated by commas.
 
-## Markdown support added
+### Markdown support added
 
 2021-02-04 Markdown is now supported. Worked all day to get filename sanitization working. My backup script can even export markdown from the [official Roam help database](https://roamresearch.com/#/app/help) and Roam [book](https://roamresearch.com/#/app/roam-book-club) [clubs](https://roamresearch.com/#/app/roam-book-club-2) error-free! I have added several measures to prevent errors:
 
@@ -50,22 +57,14 @@ You can now backup multiple graphs without having to create a new GitHub repo fo
 
 Unfortunate side-effect with markdown backups: files with duplicate names are overwritten (like [[test]] and [[Test]]). (This was also present in roam-to-git)
 
-## Separate backup save location and backup script actions
+### Separate backup save location and backup script actions
 
 It is possible now to run the script actions from a public repo, to not be limited by 2000 minutes/month, and save the backup to a private repo. Note that Secret names have changed with this update. (The guides at the top have been updated with the new Secret names and main.yml. The old version is still up, but will no longer be updated.)
 
 ## Support / Donations
 
-**If you experience any issues or errors with my backup script, let me know!** Either post as a GitHub issue here, or send me a message at my support email:
+[Common error causes and their solutions](https://github.com/everruler12/roam2github/blob/main/documentation/Common%20error%20causes.md)
 
-[erik@eriknewhard.com](mailto:erik@eriknewhard.com)
+[The original author has stopped maintenance](https://github.com/everruler12/roam2github).  (2024-09-06)
 
-You can also check here: [Common error causes and their solutions](https://github.com/everruler12/roam2github/blob/main/documentation/Common%20error%20causes.md)
-
----
-
-Some very generous people have been asking how to donate. If you like my work, I won't refuse your support!
-
-PayPal: https://paypal.me/eriknewhard
-
-Bitcoin (BTC) address: `bc1qsa3l8lraa3rjj6wyc7zdlv5z2xnlunppavtxw0`
+If I were still using Roam Research, I would continue this project.
