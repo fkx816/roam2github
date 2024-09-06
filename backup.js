@@ -340,7 +340,10 @@ function waitForDownload(download_dir) {
                     log(file, 'downloaded!')
                     resolve()
 
-                } else checkDownloads()
+                } else {
+                    log(files,'Recheck download……')
+                    checkDownloads()
+                }
             }
 
         } catch (err) { reject(err) }
